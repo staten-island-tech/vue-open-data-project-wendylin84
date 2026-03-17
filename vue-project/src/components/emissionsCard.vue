@@ -1,13 +1,13 @@
 <template>
   <div class="card">
-    <h2>{{ pokemon.name }}</h2>
+    <h2>{{ record.scenario }}</h2>
     <h3>{{ id }}</h3>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  pokemon: {
+  record: {
     type: Object,
     required: true,
   },

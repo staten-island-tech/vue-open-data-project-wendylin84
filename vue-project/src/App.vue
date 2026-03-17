@@ -1,11 +1,7 @@
+<script setup>
+import { RouterView } from 'vue-router'
+</script>
+
 <template>
-  <div>
-    <RouterLink> Vue Lists </RouterLink>
-
-    <RouterView />
-  </div>
+  <RouterView />
 </template>
-
-<script setup></script>
-
-<style scoped></style>
