@@ -1,13 +1,15 @@
 <template>
   <div class="card">
-    <h2>{{ record.scenario }}</h2>
-    <h3>{{ id }}</h3>
+    <router-link :to="emissionsPath">
+      <h2>{{ emission.scenario }}</h2>
+    </router-link>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 const props = defineProps({
-  record: {
+  emission: {
     type: Object,
     required: true,
   },
@@ -15,6 +17,9 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+})
+const emissionsPath = computed(() => {
+  return `/emissions/${props.emission.scenario}`
 })
 </script>
 

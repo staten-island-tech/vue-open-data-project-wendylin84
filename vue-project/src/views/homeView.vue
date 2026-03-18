@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <emissionsCard
-      v-for="(mon, index) in record"
-      :key="mon.scenario"
-      :record="mon"
+      v-for="(record, index) in emissions"
+      :key="record.scenario"
+      :emission="record"
       :id="index + 1"
     />
   </div>
@@ -12,18 +12,18 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import emissionsCard from '@/components/emissionsCard.vue'
-const record = ref([])
-async function getRecord() {
+const emissions = ref([])
+async function getEmissions() {
   try {
     const response = await fetch('https://data.cityofnewyork.us/resource/czei-7bxd.json')
     const data = await response.json()
-    record.value = data.results
+    emissions.value = data.filter((emission) => emission.scenario)
   } catch (error) {
     console.log(error)
   }
 }
 onMounted(() => {
-  getRecord()
+  getEmissions()
 })
 </script>
 
