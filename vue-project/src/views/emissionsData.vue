@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="card">
     <h2>{{ emission.scenario }}</h2>
+    <p>{{ emission.source }}</p>
   </div>
 </template>
 
@@ -25,4 +26,16 @@ watch(
 )
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+  width: 28%;
+  height: 500px;
+  background-color: aliceblue;
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  text-transform: uppercase;
+}
+</style>

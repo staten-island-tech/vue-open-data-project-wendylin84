@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <router-link :to="emissionsPath">
-      <h2>{{ emission.scenario }}</h2>
+      <h2>{{ emission.source }}</h2>
     </router-link>
   </div>
 </template>
@@ -19,7 +19,7 @@ const props = defineProps({
   },
 })
 const emissionsPath = computed(() => {
-  return `/emissions/${props.emission.scenario}`
+  return `/emissions/${props.emission.source}`
 })
 </script>
 
@@ -34,10 +34,5 @@ const emissionsPath = computed(() => {
   align-items: center;
   padding: 10px;
   text-transform: uppercase;
-}
-img {
-  width: 100%;
-  height: 80%;
-  object-fit: cover;
 }
 </style>
