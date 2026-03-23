@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <RouterView />
-  </div>
+  <BarChart />
+  <RouterView />
 </template>
 
-<script setup></script>
+<script>
+import BarChart from '@/components/barChart.vue'
 
-<style scoped></style>
+export default {
+  name: 'App',
+  components: { BarChart },
+}
+</script>

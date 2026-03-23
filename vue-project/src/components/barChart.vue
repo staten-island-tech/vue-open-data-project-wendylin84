@@ -1,9 +1,8 @@
 <template>
-  <Bar :chart-data="chartData" />
+  <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
 
 <script>
-// DataPage.vue
 import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -23,14 +22,11 @@ export default {
   data() {
     return {
       chartData: {
-        labels: ['January', 'February', 'March'],
-        datasets: [
-          {
-            label: 'Data One',
-            backgroundColor: '#f87979',
-            data: [40, 20, 12],
-          },
-        ],
+        labels: ['Electricity', 'Fuel Oil', 'Natural Gas', 'Steam'],
+        datasets: [{ data: [14078243.0, 2538997.0, 14043872.0, 748113.0] }],
+      },
+      chartOptions: {
+        responsive: true,
       },
     }
   },

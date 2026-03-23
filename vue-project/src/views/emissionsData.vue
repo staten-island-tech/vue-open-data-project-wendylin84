@@ -1,13 +1,13 @@
 <template>
   <div class="card">
-    <h2>{{ emission.scenario }}</h2>
-    <p>{{ emission.source }}</p>
+    <h2>{{ emission.published_date }}</h2>
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+
 const route = useRoute()
 const emission = ref({})
 async function getEmissions(id) {

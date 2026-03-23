@@ -2,7 +2,7 @@
   <div class="container">
     <emissionsCard
       v-for="(record, index) in emissions"
-      :key="record.source"
+      :key="record.scenario"
       :emission="record"
       :id="index + 1"
     />
@@ -17,7 +17,7 @@ async function getEmissions() {
   try {
     const response = await fetch('https://data.cityofnewyork.us/resource/czei-7bxd.json')
     const data = await response.json()
-    emissions.value = data.filter((emission) => emission.source)
+    emissions.value = data.filter((emission) => emission.scenario)
   } catch (error) {
     console.log(error)
   }
