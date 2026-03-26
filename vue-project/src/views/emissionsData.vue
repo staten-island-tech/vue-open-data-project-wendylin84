@@ -1,13 +1,33 @@
 <template>
-  <div class="card">
-    <h2>{{ emission.published_date }}</h2>
-  </div>
+  <Bar :data="chartData" :options="chartOptions" />
 </template>
 
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { Bar } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js'
 
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+const props = defineProps({
+  chartData: {
+    type: Object,
+    required: true,
+  },
+  chartOptions: {
+    type: Object,
+    default: () => ({}),
+  },
+})
 const route = useRoute()
 const emission = ref({})
 async function getEmissions(id) {

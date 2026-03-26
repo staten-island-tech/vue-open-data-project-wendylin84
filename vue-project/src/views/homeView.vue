@@ -25,6 +25,25 @@ async function getEmissions() {
 onMounted(() => {
   getEmissions()
 })
+
+async function getEmissions() {
+  try {
+    const response = await fetch('https://data.cityofnewyork.us/resource/czei-7bxd.json')
+    const data = await response.json()
+
+    const uniqueScenarios = {}
+
+    data.forEach((item) => {
+      if (item.scenario && !uniqueScenarios[item.scenario]) {
+        uniqueScenarios[item.scenario] = item
+      }
+    })
+
+    emissions.value = Object.values(uniqueScenarios)
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 
 <style scoped>
