@@ -19,6 +19,13 @@ import {
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
+const props = defineProps({
+  scenario: {
+    type: String,
+    default: '',
+  },
+})
+
 const loaded = ref(false)
 const chartData = ref(null)
 
@@ -27,9 +34,14 @@ onMounted(async () => {
     const response = await fetch('https://data.cityofnewyork.us/resource/czei-7bxd.json')
     const data = await response.json()
 
+    const selectedScenario = props.scenario ? decodeURIComponent(props.scenario) : ''
+    const filteredData = selectedScenario
+      ? data.filter((item) => item.scenario === selectedScenario)
+      : data
+
     const sectorTotals = {}
 
-    data.forEach((item) => {
+    filteredData.forEach((item) => {
       const sector = item.sector || 'Unknown'
       const emissions = parseFloat(item.metric_tons_of_co2e) || 0
 
@@ -44,9 +56,11 @@ onMounted(async () => {
       labels: Object.keys(sectorTotals),
       datasets: [
         {
-          label: 'Total CO₂ Emissions by Sector',
+          label: selectedScenario
+            ? `CO₂ emissions for ${selectedScenario} by sector`
+            : 'Total CO₂ Emissions by Sector',
           data: Object.values(sectorTotals),
-          backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff'],
+          backgroundColor: ['#e6beaf', '#ffc3d3', '#ffa1b1', '#bc8d80', '#fff4ec'],
         },
       ],
     }

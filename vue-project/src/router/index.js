@@ -10,7 +10,7 @@ const router = createRouter({
       component: homeView,
     },
     {
-      path: '/emissions/:id',
+      path: '/emissions/:scenario',
       name: 'emissions',
       component: emissionsData,
     },

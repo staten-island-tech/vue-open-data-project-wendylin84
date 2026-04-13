@@ -19,20 +19,19 @@ const props = defineProps({
   },
 })
 const emissionsPath = computed(() => {
-  return `/emissions/${props.emission.scenario}`
+  return `/emissions/${encodeURIComponent(props.emission.scenario)}`
 })
 </script>
 
 <style scoped>
 .card {
   width: 28%;
-  height: 500px;
-  background-color: aliceblue;
+  height: 300px;
+  background-color: rgb(247, 237, 248);
   margin: 30px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  text-transform: uppercase;
 }
 </style>

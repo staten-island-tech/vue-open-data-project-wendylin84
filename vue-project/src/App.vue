@@ -1,13 +1,22 @@
 <template>
-  <BarChart />
   <RouterView />
 </template>
 
 <script>
-import BarChart from '@/components/barChart.vue'
-
 export default {
   name: 'App',
-  components: { BarChart },
 }
 </script>
+
+<style>
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(202, 179, 194);
+}
+</style>

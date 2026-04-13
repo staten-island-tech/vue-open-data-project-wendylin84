@@ -1,4 +1,5 @@
 <template>
+  <h1>Carbon Emissions in NYC</h1>
   <div class="container">
     <emissionsCard
       v-for="(record, index) in emissions"
@@ -13,18 +14,6 @@
 import { ref, onMounted } from 'vue'
 import emissionsCard from '@/components/emissionsCard.vue'
 const emissions = ref([])
-async function getEmissions() {
-  try {
-    const response = await fetch('https://data.cityofnewyork.us/resource/czei-7bxd.json')
-    const data = await response.json()
-    emissions.value = data.filter((emission) => emission.scenario)
-  } catch (error) {
-    console.log(error)
-  }
-}
-onMounted(() => {
-  getEmissions()
-})
 
 async function getEmissions() {
   try {
@@ -44,6 +33,10 @@ async function getEmissions() {
     console.log(error)
   }
 }
+
+onMounted(() => {
+  getEmissions()
+})
 </script>
 
 <style scoped>
@@ -55,5 +48,11 @@ async function getEmissions() {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  color: #5f346e;
+  font-size: 35px;
 }
 </style>
